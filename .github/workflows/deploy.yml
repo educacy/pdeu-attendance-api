@@ -1,4 +1,4 @@
-name: PDEU Educacy Auth API - AWS Serverless
+name: PDEU Attendance API - AWS Serverless
 
 on:
   push:
@@ -19,6 +19,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm ci
+    - run: npx prisma generate
     - name: Serverless Deployment
       uses: serverless/github-action@v3.1
       with:

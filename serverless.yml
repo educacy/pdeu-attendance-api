@@ -1,4 +1,4 @@
-service: aws-educacy-pdeu-auth
+service: aws-educacy-pdeu-attendace-api
 frameworkVersion: '3'
 # useDotenv: true
 # plugins:
@@ -13,4 +13,4 @@ functions:
   api:
     handler: handler.handler
     events:
-      - httpApi: '*'
+      - httpApi: '*''
