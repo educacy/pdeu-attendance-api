@@ -1,0 +1,30 @@
+name: PDEU Educacy Auth API - AWS Serverless
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: deploy
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+    - run: npm ci
+    - name: Serverless Deployment
+      uses: serverless/github-action@v3.1
+      with:
+        # args: -c "serverless plugin install --name serverless-dotenv-plugin && serverless deploy"
+        args: -c "serverless deploy"
+        entrypoint: /bin/sh
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
