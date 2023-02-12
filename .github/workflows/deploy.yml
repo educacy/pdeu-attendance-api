@@ -1,4 +1,4 @@
-name: PDEU Attendance API - AWS Serverless
+name: PDEU Attendance API v1 - AWS Serverless
 
 on:
   push:
