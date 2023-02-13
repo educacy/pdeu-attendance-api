@@ -16,12 +16,14 @@ supertokens.init(require("./config/supertoken"));
 //   }
 // })
 app.use(express.json());
+// app.use(cors)
 app.use(
   cors({
-      origin: "http://localhost:3000",
-      allowedHeaders: ["content-type", ...supertokens.getAllCORSHeaders()],
+      origin: "http://localhost:5173",
+      allowedHeaders: ["content-type", ...supertokens.getAllCORSHeaders(),"anti-csrf", "rid", "fdi-version", "authorization", "st-auth-mode", "Origin, X-Requested-With, Content-Type, Accept, Authorization"],
       methods: ["GET", "PUT", "POST", "DELETE"],
       credentials: true,
+      // origin: true,
   })
 );
 
